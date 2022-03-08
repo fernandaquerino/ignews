@@ -6,6 +6,8 @@ import { stripe } from '../services/stripe';
 
 import styles from './home.module.scss';
 
+import { ToastContainer } from 'react-toast';
+
 interface HomeProps {
   product: {
     priceId: string,
@@ -16,6 +18,7 @@ interface HomeProps {
 export default function Home({ product }: HomeProps) {
   return (
     <>
+      <ToastContainer delay={3000} position='top-right' />
       <Head>
         <title>Inicio | ig.news</title>
       </Head>

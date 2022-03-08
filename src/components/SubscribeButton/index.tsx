@@ -2,6 +2,7 @@ import { useSession, signIn } from 'next-auth/react';
 import { api } from '../../services/api';
 import { getStripeJs } from '../../services/stripe-js';
 import styles from './styles.module.scss';
+import { toast } from 'react-toast';
 
 interface SubscribeButtonProps {
   priceId: string
@@ -25,7 +26,10 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
 
       await stripe.redirectToCheckout({ sessionId })
     } catch (err) {
-      alert(err.message);
+      toast.error('🚨 ' + err, {
+        backgroundColor: '#29292e',
+        color: '#eba417',
+      })
     }
   }
 
